@@ -1,24 +1,30 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using YugiohDex.Models;
 
-namespace YugiohDex.Models
+namespace Yugiohdex.Models;
+
+[Table("Carta")]
+public class Carta
 {
-    [Table("Tipo")]
-    public class Tipo_Cartas
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Carta_Id { get; set; }
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    public int Numero { get; set; }
 
-        [Required(ErrorMessage = "Por Favor, Informe O Nome Do Tipo Da Carta")]
-        [StringLength(30, ErrorMessage = "O Tipo Da Carta Deve Possuir No Maximo 30 Caracteres")]
-        public string Carta_Nome { get; set; }
+    [Required(ErrorMessage = "Informe o Nome")]
+    [StringLength(30, ErrorMessage = "O Nome deve possuir no máximo 30 caracteres")]
+    public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Por Favor, Informe a cor")]
-        [StringLength(20, ErrorMessage = "A Cor Deve Possuir No Maximo 20 Caracteres")]
-        public string Cor { get; set; }
+    [StringLength(1000)]
+    public string Descricao { get; set; }
 
-        public ICollection<Yugioh> Yugiohs {get; set; }
-    }
+    [Required]
+    [Column(TypeName = "decimal(7,3)")]
+    public decimal Imagem { get; set; }
+
+    [StringLength(400)]
+    public string Animacao { get; set; }
+
+    public ICollection<Tipo_carta> tipo_cartas_id { get; set; }
+
 }

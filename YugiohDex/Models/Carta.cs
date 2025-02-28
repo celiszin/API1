@@ -11,6 +11,10 @@ public class Carta
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int Numero { get; set; }
 
+    [Required(ErrorMessage = "Informe O Id")]
+    [StringLength(5, ErrorMessage = "O Id deve possuir no maximo 5 caracteres")]
+    public int Id { get; set; }
+
     [Required(ErrorMessage = "Informe o Nome")]
     [StringLength(30, ErrorMessage = "O Nome deve possuir no máximo 30 caracteres")]
     public string Nome { get; set; }
@@ -18,13 +22,8 @@ public class Carta
     [StringLength(1000)]
     public string Descricao { get; set; }
 
-    [Required]
-    [Column(TypeName = "decimal(7,3)")]
-    public decimal Imagem { get; set; }
+    public ICollection<Tipo_carta> TipoCartasId { get; set; }
 
-    [StringLength(400)]
-    public string Animacao { get; set; }
-
-    public ICollection<Tipo_carta> tipo_cartas_id { get; set; }
+    public List<CartaFoto> Fotos { get; set; }
 
 }

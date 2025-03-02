@@ -26,7 +26,7 @@ namespace YugiohDex.Models
             List<Carta> cartas = new()
             {
                 // Armadilhas
-                new Carta { Id = 1, Nome = "Força Espelho", Descricao = "Uma habilidade que reflete ataques inimigos de volta, surpreendendo adversários descuidados." },
+                new Carta { Id = 1, Numero = 1,  Nome = "Força Espelho", Descricao = "Uma habilidade que reflete ataques inimigos de volta, surpreendendo adversários descuidados.", }
             };
             builder.Entity<Carta>().HasData(cartas);
         }
